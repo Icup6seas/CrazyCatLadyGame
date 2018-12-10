@@ -2,9 +2,8 @@ package edu.ferris.isys_221.crazycatlady;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.support.annotation.MainThread;
 
-public class CrazyCatLadyToon extends CatLady {
+/*public class CrazyCatLadyToon extends CatLady {
 
     private static final int COL_TOP_TO_BOTTOM = 0;
     private static final int COL_RIGHT_TO_LEFT = 2;
@@ -116,7 +115,7 @@ public class CrazyCatLadyToon extends CatLady {
         }
     }
 
-    public void write(Canvas canvas){
+    public void draw(Canvas canvas){
         Bitmap bitmap = this.currentMoveImage();
         canvas.drawBitmap(bitmap, x, y, null);
         this.lastDrawnImage = System.nanoTime();
@@ -126,4 +125,4 @@ public class CrazyCatLadyToon extends CatLady {
         this.movingVectorX = movingVectorX;
         this.movingVectorY = movingVectorY;
     }
-}
+}*/

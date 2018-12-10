@@ -37,6 +37,8 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
         //links the click listener to the Play button
         btn_Play.setOnClickListener(this);
+
+        //this.setContentView(new GameSpace(this));
     }
 
     @Override
