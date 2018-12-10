@@ -8,7 +8,6 @@ public class CatLadyGameActivity extends AppCompatActivity {
     //Declaring CatLadyGameView
     private CatLadyGameView catLadyGameView;
 
-
     //Starting the catLadyGameView, adding it to the contentView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
