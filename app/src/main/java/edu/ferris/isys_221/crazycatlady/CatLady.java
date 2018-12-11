@@ -15,8 +15,8 @@ public class CatLady {
     private final int GRAVITY = -10;
     private int maxY;
     private int minY;
-    private final int MIN_SPEED = 0;
-    private final int MAX_SPEED = 15;
+    private final int MIN_SPEED = 1;
+    private final int MAX_SPEED = 20;
 
     public CatLady(Context context, int screenX, int screenY){
         x = 75;
@@ -79,50 +79,4 @@ public class CatLady {
     public int getSpeed(){
         return speed;
     }
-
-    /*protected Bitmap bitmap;
-
-    protected final int rowCount;
-    protected final int colCount;
-    protected final int WIDTH;
-    protected final int HEIGHT;
-    protected final int width;
-    protected final int height;
-    protected int x;
-    protected int y;
-
-
-    public CatLady(Bitmap bitmap, int rowCount, int colCount, int x, int y){
-
-        this.bitmap = bitmap;
-        this.rowCount = rowCount;
-        this.colCount = colCount;
-        this.x = x;
-        this.y = y;
-        this.WIDTH = bitmap.getWidth();
-        this.HEIGHT = bitmap.getHeight();
-        this.width = this.WIDTH / colCount;
-        this.height = this.HEIGHT / rowCount;
-    }
-
-    protected Bitmap createImages(int row, int col){
-        Bitmap createImage = Bitmap.createBitmap(bitmap, col*width, row*height, width, height);
-        return createImage;
-    }
-
-    public int getX(){
-        return this.x;
-    }
-
-    public int getY(){
-        return this.y;
-    }
-
-    public int getHeight(){
-        return height;
-    }
-
-    public int getWidth(){
-        return width;
-    }*/
 }

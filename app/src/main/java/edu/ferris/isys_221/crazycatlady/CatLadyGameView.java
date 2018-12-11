@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -18,7 +17,8 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
     private Paint paint;
     private Canvas canvas;
     private SurfaceHolder surfaceHolder;
-
+    private KittyCats[] kittyCats;
+    private int kittyCount = 5;
 
     //creating a constructor for the Crazy Cat Lady!
     public CatLadyGameView(Context context, int  screenX, int screenY){
@@ -26,6 +26,11 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
         catLady = new CatLady(context, screenX, screenY);
         surfaceHolder = getHolder();
         paint = new Paint();
+
+        kittyCats = new KittyCats[kittyCount];
+        for (int i = 0; i < kittyCount; i++){
+            kittyCats[i] = new KittyCats(context, screenX, screenY);
+        }
     }
 
     @Override
@@ -52,6 +57,10 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
 
     private void update(){
         catLady.update();
+
+        for (int i = 0; i < kittyCount; i++){
+            kittyCats[i].update(catLady.getSpeed());
+        }
     }
 
     //Valid location, background and Cat Lady
@@ -64,6 +73,16 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
                     catLady.getX(),
                     catLady.getY(),
                     paint);
+
+            //Adding KittyCats to the game space
+            for (int i = 0; i < kittyCount; i++){
+                canvas.drawBitmap(
+                        kittyCats[i].getBitmap(),
+                        kittyCats[i].getX(),
+                        kittyCats[i].getY(),
+                        paint
+                );
+            }
             surfaceHolder.unlockCanvasAndPost(canvas);
         }
     }

@@ -32,7 +32,6 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
 
-
         //Landscape orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -41,7 +40,6 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
 
         //links the click listener to the Play button
         btn_Play.setOnClickListener(this);
-
     }
 
     @Override
