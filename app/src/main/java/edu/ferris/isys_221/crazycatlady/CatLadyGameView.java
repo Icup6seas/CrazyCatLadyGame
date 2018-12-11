@@ -4,6 +4,9 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
+import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -19,6 +22,8 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
     private SurfaceHolder surfaceHolder;
     private KittyCats[] kittyCats;
     private int kittyCount = 5;
+    static MediaPlayer gameMusic;
+    final MediaPlayer catSnatchingSound;
 
     //creating a constructor for the Crazy Cat Lady!
     public CatLadyGameView(Context context, int  screenX, int screenY){
@@ -31,6 +36,13 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
         for (int i = 0; i < kittyCount; i++){
             kittyCats[i] = new KittyCats(context, screenX, screenY);
         }
+
+        //adding music and sfx
+        gameMusic = MediaPlayer.create(context,R.raw.in_game_music);
+        catSnatchingSound = MediaPlayer.create(context,R.raw.meow_collision);
+
+        gameMusic.start();
+
     }
 
     @Override
@@ -60,6 +72,11 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
 
         for (int i = 0; i < kittyCount; i++){
             kittyCats[i].update(catLady.getSpeed());
+
+            if (Rect.intersects(catLady.getCollDetection(), kittyCats[i].getCollDetection())){
+                catSnatchingSound.start();
+                kittyCats[i].setX(-1000);
+            }
         }
     }
 

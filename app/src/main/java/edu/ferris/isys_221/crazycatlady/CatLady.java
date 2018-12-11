@@ -3,6 +3,7 @@ package edu.ferris.isys_221.crazycatlady;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 
 public class CatLady {
 
@@ -12,14 +13,16 @@ public class CatLady {
     private int y;
     private int speed = 0;
     private boolean running;
-    private final int GRAVITY = -10;
+    private final int GRAVITY = -20;
     private int maxY;
     private int minY;
-    private final int MIN_SPEED = 1;
-    private final int MAX_SPEED = 20;
+    private final int MIN_SPEED = 5;
+    private final int MAX_SPEED = 30;
+
+    private Rect collDetection;
 
     public CatLady(Context context, int screenX, int screenY){
-        x = 75;
+        x = 80;
         y = 50;
         speed = 1;
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.crazy_lady);
@@ -28,6 +31,8 @@ public class CatLady {
         minY = 0;
 
         running = false;
+
+        collDetection = new Rect(x, y, bitmap.getWidth(), bitmap.getHeight());
     }
 
     public void setRunning(){
@@ -40,7 +45,7 @@ public class CatLady {
 
     public void update(){
         if (running){
-            speed += 2;
+            speed += 10;
         }else {
             speed -= 5;
         }
@@ -62,6 +67,15 @@ public class CatLady {
         if (y > maxY){
             y = maxY;
         }
+
+        collDetection.left = x;
+        collDetection.top = y;
+        collDetection.right = x + bitmap.getWidth();
+        collDetection.bottom = y + bitmap.getHeight();
+    }
+
+    public Rect getCollDetection(){
+        return collDetection;
     }
 
     public Bitmap getBitmap() {
