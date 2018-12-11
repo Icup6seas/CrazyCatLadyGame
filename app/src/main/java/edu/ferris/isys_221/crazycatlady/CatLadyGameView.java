@@ -20,11 +20,10 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
     private SurfaceHolder surfaceHolder;
 
 
-    //creating a constructor!
-    public CatLadyGameView(Context context){
+    //creating a constructor for the Crazy Cat Lady!
+    public CatLadyGameView(Context context, int  screenX, int screenY){
         super(context);
-
-        catLady = new CatLady(context);
+        catLady = new CatLady(context, screenX, screenY);
         surfaceHolder = getHolder();
         paint = new Paint();
     }
@@ -42,10 +41,10 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
     public boolean onTouchEvent(MotionEvent motionEvent){
         switch (motionEvent.getAction() & MotionEvent.ACTION_MASK){
             case MotionEvent.ACTION_UP:
-
+                catLady.stopRunning();
                 break;
             case MotionEvent.ACTION_DOWN:
-
+                catLady.setRunning();
                 break;
         }
         return true;
@@ -83,7 +82,6 @@ public class CatLadyGameView extends SurfaceView implements Runnable {
         try {
             catLadyGameThread.join();
         }catch (InterruptedException e){
-
         }
     }
 

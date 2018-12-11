@@ -12,9 +12,12 @@ package edu.ferris.isys_221.crazycatlady;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Display;
+import android.view.PointerIcon;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -29,6 +32,7 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cat);
 
+
         //Landscape orientation
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
@@ -38,7 +42,6 @@ public class CatActivity extends AppCompatActivity implements View.OnClickListen
         //links the click listener to the Play button
         btn_Play.setOnClickListener(this);
 
-        //this.setContentView(new GameSpace(this));
     }
 
     @Override

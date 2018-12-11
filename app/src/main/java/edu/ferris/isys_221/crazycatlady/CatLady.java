@@ -11,21 +11,21 @@ public class CatLady {
     private int x;
     private int y;
     private int speed = 0;
-
     private boolean running;
     private final int GRAVITY = -10;
-
     private int maxY;
     private int minY;
-
     private final int MIN_SPEED = 0;
     private final int MAX_SPEED = 15;
 
-    public CatLady(Context context){
-        x = 60;
-        y = 60;
+    public CatLady(Context context, int screenX, int screenY){
+        x = 75;
+        y = 50;
         speed = 1;
         bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.crazy_lady);
+
+        maxY = screenY - bitmap.getHeight();
+        minY = 0;
 
         running = false;
     }
